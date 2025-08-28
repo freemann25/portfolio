@@ -1,1 +1,531 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achour Freemann - Portfolio</title>
+    <meta name="description" content="Portfolio of Achour Freemann, an aspiring AI Applications Developer & CyberSecurity passionate.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-black: rgb(0, 0, 0);
+            --dot-color: rgb(38, 38, 38);
+            --dot-space: rgb(26, 26, 26);
+            --text-white: rgb(255, 255, 255);
+            --text-gray: rgb(179, 179, 179);
+            --card-gray: rgb(36, 36, 36);
+            --accent-yellow: rgb(247, 163, 7);
+            --accent-blue: rgb(33, 74, 222);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Azeret Mono', monospace;
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 1px 1px, var(--dot-color) 1px, transparent 0),
+                linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.03) 100%);
+            background-size: 40px 40px, 100% 100%;
+            background-position: center;
+            padding: 40px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Left Column Styles */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .profile-card {
+            background-color: var(--card-gray);
+            border-radius: 36px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--dot-space);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid rgba(255,255,255,0.1);
+        }
+
+        .avatar i {
+            font-size: 60px;
+            color: var(--text-gray);
+        }
+
+        .name {
+            font-weight: 500;
+            font-size: 24px;
+            letter-spacing: 0.1em;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            font-weight: 300;
+            font-size: 16px;
+            color: var(--text-gray);
+            letter-spacing: 0.1em;
+        }
+
+        .bio {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 1.6em;
+            color: var(--text-gray);
+            text-align: left;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        .social-link i {
+            color: var(--text-white);
+            font-size: 18px;
+        }
+
+        /* Right Column Styles */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto;
+            gap: 20px;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bento-card {
+            background-color: var(--card-gray);
+            border-radius: 36px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .bento-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+        }
+
+        .bento-card.blue {
+            background-color: var(--accent-blue);
+        }
+
+        .bento-card.yellow {
+            background-color: var(--accent-yellow);
+        }
+
+        .bento-card.large {
+            grid-column: span 2;
+        }
+
+        .card-title {
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+        }
+
+        .card-content {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 1.6em;
+            color: var(--text-gray);
+        }
+
+        .blue .card-content, .yellow .card-content {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .card-arrow {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .bento-card:hover .card-arrow {
+            transform: translateX(5px);
+        }
+
+        .card-arrow i {
+            font-size: 16px;
+            color: var(--text-white);
+        }
+
+        /* Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-overlay.is-visible {
+            display: flex;
+        }
+        .modal-content {
+            background-color: var(--card-gray);
+            padding: 30px;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+                .more-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.more-btn:hover {
+  background: white;
+  color: black;
+}
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            .profile-card, .bento-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Column - Profile Section -->
+        <div class="profile-section">
+            <div class="profile-card">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1 class="name">ACHOUR FREEMANN</h1>
+                <p class="title">AI Applications Developer & CyberSecurity Professional</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="profile-card">
+                <p class="bio">
+                    Hi, I’m Achour Hammi, a passionate learner in software engineering with a focus on AI application development. My mission is to use technology to solve real community problems, especially in education, infrastructure, and sustainability.
+
+I believe growth comes through challenges, and I’ve built a clear plan to overcome mine: strengthening self-confidence, organizing my time with discipline, and continuously learning from failures as stepping stones.
+                </p>
+                  <!-- More About Me Button -->
+<button class="more-btn" onclick="document.getElementById('more-about-modal').classList.add('is-visible')">More about Me</button>
+
+            </div>
+        </div>
+        
+        <!-- Right Column - Bento Grid -->
+        <div class="bento-grid">
+<div class="bento-card large h-[300px] p-6 rounded-2xl shadow-lg bg-white">
+  <h2 class="card-title text-2xl font-bold mb-2 text-purple-500">PORTFOLIO</h2>
+  <p class="card-content text-gray-600 mb-4">
+    Explore my collection of projects and case studies showcasing my skills in AI development and cybersecurity.
+  </p>
+
+  <h4 class="text-lg font-semibold mt-4">Phase 2 Project Video</h4>
+  <a href="https://youtube.com/shorts/QNSD6sslymg?si=yCQ09UTjKWynHD3V" 
+     target="_blank" 
+     class="text-blue-600 hover:text-blue-800 underline">
+    View Project Video on YouTube
+  </a>
+
+  <h4 class="text-lg font-semibold mt-6">Phase 2 Project Slide Deck</h4>
+  <a href="https://drive.google.com/file/d/1DEYpGIgrNX01TehcVupJg8fZgfYRKcK8/view?usp=sharing" 
+     target="_blank" 
+     class="text-blue-600 hover:text-blue-800 underline">
+    View Slide Deck (PDF)
+  </a>
+</div>
+
+
+            
+            <a href="#" class="bento-card" id="open-bio-modal">
+                <h2 class="card-title">BIO</h2>
+                <p class="card-content">Learn more about my background, education, and professional journey.</p>
+                <div class="card-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+            
+            <a href="#" class="bento-card" id="open-elevator-pitch-modal">
+                <h2 class="card-title">ELEVATOR PITCH</h2>
+                <p class="card-content">A quick overview of what I do and how I can add value to your organization.</p>
+                <div class="card-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+            
+            <a href="#" class="bento-card blue">
+                <h2 class="card-title">MY STACK</h2>
+                <p class="card-content">Technologies and tools I specialize in for AI development and cybersecurity.</p>
+                <div class="card-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+            
+            <a href="#" class="bento-card yellow">
+                <h2 class="card-title">CONTACT</h2>
+                <p class="card-content">Get in touch for collaborations, opportunities, or just to say hello!</p>
+                <div class="card-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div id="bio-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>About Me</h2>
+            <p>I am Achour H., an aspiring AI Applications Developer passionate about leveraging technology to create intelligent and impactful solutions. With a strong foundation in software engineering and a deep interest in machine learning, I am dedicated to building innovative products that tackle real-world challenges.
+
+My goal is to contribute to a forward-thinking tech startup, where I can apply my skills to develop robust AI systems that make a difference. Recently, I led a personal project using natural language processing to categorize customer feedback, which showcased my ability to transform complex data into meaningful insights.
+
+I am committed to continuous learning, exploring new tools, and refining my expertise, with the ambition to play a key role in driving the next wave of technological innovation.</p>
+        </div>
+    </div>
+
+    <div id="portfolio-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Portfolio</h2>
+            <h4>Phase 2 Project Video</h4>
+            <a href="https://youtube.com/shorts/QNSD6sslymg?si=yCQ09UTjKWynHD3V" target="_blank">View Project Video on YouTube</a>
+            <br><br>
+            <h4>Phase 2 Project Slide Deck</h4>
+            <a href="https://drive.google.com/file/d/1DEYpGIgrNX01TehcVupJg8fZgfYRKcK8/view?usp=sharing" target="_blank">View Slide Deck (PDF)</a>
+        </div>
+    </div>
+
+    <div id="elevator-pitch-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Elevator Pitch</h2>
+            <p>My elevator pitch video is coming soon. Please check back later!</p>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+<div id="more-about-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="document.getElementById('more-about-modal').classList.remove('is-visible')">&times;</button>
+      <h2 class="text-xl font-bold mb-4">More About Me</h2>
+<br><br>
+      <h3 class="font-semibold text-lg mb-2">Education</h3>
+      <ul class="list-disc list-inside text-gray-300 mb-4 text-sm leading-relaxed">
+          <li>Bac, Wawizaght, Beni Mellal - Khenifra — 2018</li>
+          <li>Studying Computer Science and Mathematics at USMS, Beni Mellal - Khenifra</li>
+          <li>Completing a programme in AI Augmented Professional Development Skills in the Digital Age — 2024</li>
+      </ul>
+<br>
+      <h3 class="font-semibold text-lg mb-2">Experience</h3>
+      <ul class="list-disc list-inside text-gray-300 text-sm leading-relaxed">
+          <li>Freelance Web Designer — InnovateTech Inc., 2020 - present</li>
+          <li>Lead Designer — XYZ Creative Agency, 2015 - 2019</li>
+          <li>Senior Web Designer — ABC Web Studio, 2010 - 2015</li>
+          <li>Web Design Intern — ABC Web Studio, 2009 - 2010</li>
+      </ul>
+  </div>
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal Triggers
+            const bioTrigger = document.getElementById('open-bio-modal');
+            const portfolioTrigger = document.getElementById('open-portfolio-modal');
+            const elevatorPitchTrigger = document.getElementById('open-elevator-pitch-modal');
+
+            // Modals
+            const bioModal = document.getElementById('bio-modal');
+            const portfolioModal = document.getElementById('portfolio-modal');
+            const elevatorPitchModal = document.getElementById('elevator-pitch-modal');
+
+            const allModals = document.querySelectorAll('.modal-overlay');
+            const allCloseButtons = document.querySelectorAll('.close-modal');
+
+            function openModal(modal) {
+                if (modal) {
+                    modal.classList.add('is-visible');
+                }
+            }
+
+            function closeModal() {
+                allModals.forEach(modal => {
+                    modal.classList.remove('is-visible');
+                });
+            }
+
+            // Event Listeners for Opening Modals
+            if(bioTrigger) {
+                bioTrigger.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    openModal(bioModal);
+                });
+            }
+
+            if(portfolioTrigger) {
+                portfolioTrigger.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    openModal(portfolioModal);
+                });
+            }
+
+            if(elevatorPitchTrigger) {
+                elevatorPitchTrigger.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    openModal(elevatorPitchModal);
+                });
+            }
+
+            // Event Listeners for Closing Modals
+            allCloseButtons.forEach(button => {
+                button.addEventListener('click', closeModal);
+            });
+
+            allModals.forEach(modal => {
+                modal.addEventListener('click', function(event) {
+                    if (event.target === this) {
+                        closeModal();
+                    }
+                });
+            });
+
+            // Add subtle animation to bento cards on hover
+            document.querySelectorAll('.bento-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-5px)';
+                    card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = 'none';
+                });
+            });
+        });
+
+        // Inside your DOMContentLoaded
+
+    </script>
+</body>
+</html> 
